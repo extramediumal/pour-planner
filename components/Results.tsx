@@ -57,7 +57,7 @@ export function Results({ results, barStyle, state, serviceType, qualityTier }: 
                 {animatedBeerCases} cases
               </p>
               <p className="text-sm text-stone-500">
-                {animatedBeerBottles} bottles
+                {animatedBeerCases * 24} bottles
               </p>
             </div>
           </div>

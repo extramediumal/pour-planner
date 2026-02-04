@@ -15,10 +15,10 @@ describe('calculate', () => {
 
     const result = calculate(inputs);
 
-    // 100 guests * 4 hours * 1.0 intensity * 1.0 age = 400 drinks
-    // 400 drinks / 24 per case = 16.67 cases, rounded up = 17 cases
-    expect(result.beerCases).toBe(17);
-    expect(result.beerBottles).toBe(400);
+    // 100 guests * 4 hours * 0.85 intensity * 1.0 age = 340 drinks
+    // 340 drinks / 24 per case = 14.17 cases, rounded up = 15 cases
+    expect(result.beerCases).toBe(15);
+    expect(result.beerBottles).toBe(340);
     expect(result.wineBottles).toBe(0);
     expect(result.spiritBottles).toBe(0);
   });
@@ -33,7 +33,7 @@ describe('calculate', () => {
 
     const result = calculate(inputs);
 
-    // 1.0 drinks per hour = level 3 (range is 0.75 <= x <= 1.0)
+    // 0.85 drinks per hour = level 3 (range is 0.7 <= x < 1.0)
     expect(result.vibeLevel).toBe(3);
     expect(result.vibeName).toBe('Social Sippers');
   });
@@ -48,9 +48,9 @@ describe('calculate', () => {
 
     const result = calculate(inputs);
 
-    // 1.5 drinks per hour = level 5
-    expect(result.vibeLevel).toBe(5);
-    expect(result.vibeName).toBe('Eternal Frat Boys');
+    // 1.25 drinks per hour = level 4
+    expect(result.vibeLevel).toBe(4);
+    expect(result.vibeName).toBe("We're Here to Party");
   });
 
   it('applies state multiplier to cost', () => {
@@ -74,9 +74,12 @@ describe('calculate', () => {
 
     const result = calculate(inputs);
 
-    // Total 400 drinks: 40% beer, 35% wine, 25% spirits
-    expect(result.beerBottles).toBe(160);
-    expect(result.wineBottles).toBe(28); // 140 glasses / 5 per bottle = 28
-    expect(result.spiritBottles).toBe(7); // 100 shots / 16 per bottle = 6.25, rounded = 7
+    // Total 340 drinks (100 * 4 * 0.85): 40% beer, 35% wine, 25% spirits
+    // Beer: 340 * 0.4 = 136
+    // Wine: 340 * 0.35 = 119 glasses / 5 = 24 bottles
+    // Spirits: 340 * 0.25 = 85 shots / 16 = 6 bottles
+    expect(result.beerBottles).toBe(136);
+    expect(result.wineBottles).toBe(24);
+    expect(result.spiritBottles).toBe(6);
   });
 });

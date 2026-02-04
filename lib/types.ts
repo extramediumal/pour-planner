@@ -1,5 +1,5 @@
 export type BarStyle = 'beer' | 'beer-wine' | 'full';
-export type Intensity = 'light' | 'moderate' | 'heavy';
+export type Intensity = 'very-light' | 'light' | 'moderate' | 'heavy' | 'very-heavy';
 export type AgeSkew = 'younger' | 'mixed' | 'older';
 export type ServiceType = 'byob' | 'venue';
 export type QualityTier = 'budget' | 'mid' | 'premium';

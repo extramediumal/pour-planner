@@ -21,7 +21,7 @@ function parseSearchParams(searchParams: URLSearchParams): Partial<CalculatorInp
   }
 
   const intensity = searchParams.get('intensity');
-  if (intensity && ['light', 'moderate', 'heavy'].includes(intensity)) {
+  if (intensity && ['very-light', 'light', 'moderate', 'heavy', 'very-heavy'].includes(intensity)) {
     params.intensity = intensity as CalculatorInputs['intensity'];
   }
 

@@ -20,9 +20,11 @@ const barStyleOptions = [
 ];
 
 const intensityOptions = [
-  { value: 'light' as Intensity, label: 'Light' },
-  { value: 'moderate' as Intensity, label: 'Moderate' },
-  { value: 'heavy' as Intensity, label: 'Heavy' },
+  { value: 'very-light' as Intensity, label: '1' },
+  { value: 'light' as Intensity, label: '2' },
+  { value: 'moderate' as Intensity, label: '3' },
+  { value: 'heavy' as Intensity, label: '4' },
+  { value: 'very-heavy' as Intensity, label: '5' },
 ];
 
 const ageOptions = [
@@ -45,6 +47,20 @@ const qualityOptions = [
 export function InputPanel({ inputs, onUpdate, isMobile = false }: InputPanelProps) {
   return (
     <div className="space-y-6">
+      {isMobile ? (
+        <StateSelect
+          value={inputs.state}
+          onChange={(v) => onUpdate('state', v)}
+        />
+      ) : (
+        <USMap
+          selectedState={inputs.state}
+          onStateSelect={(v) => onUpdate('state', v)}
+        />
+      )}
+
+      <div className="h-px bg-stone-200" />
+
       <Slider
         label="Number of Guests"
         value={inputs.guests}
@@ -99,20 +115,6 @@ export function InputPanel({ inputs, onUpdate, isMobile = false }: InputPanelPro
         value={inputs.qualityTier}
         onChange={(v) => onUpdate('qualityTier', v)}
       />
-
-      <div className="h-px bg-stone-200" />
-
-      {isMobile ? (
-        <StateSelect
-          value={inputs.state}
-          onChange={(v) => onUpdate('state', v)}
-        />
-      ) : (
-        <USMap
-          selectedState={inputs.state}
-          onStateSelect={(v) => onUpdate('state', v)}
-        />
-      )}
     </div>
   );
 }
