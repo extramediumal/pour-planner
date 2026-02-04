@@ -3,6 +3,7 @@
 import { CalculatorResults, BarStyle } from '@/lib/types';
 import { VibeMeter } from './VibeMeter';
 import { STATE_NAMES } from '@/lib/constants';
+import { useAnimatedNumber } from '@/hooks/useAnimatedNumber';
 
 interface ResultsProps {
   results: CalculatorResults;
@@ -25,6 +26,13 @@ export function Results({ results, barStyle, state, serviceType, qualityTier }: 
   const qualityLabel = qualityTier === 'budget' ? 'budget' : qualityTier === 'mid' ? 'mid-range' : 'premium';
   const serviceLabel = serviceType === 'byob' ? 'BYOB' : 'venue';
 
+  const animatedBeerCases = useAnimatedNumber(results.beerCases);
+  const animatedBeerBottles = useAnimatedNumber(results.beerBottles);
+  const animatedWineBottles = useAnimatedNumber(results.wineBottles);
+  const animatedSpiritBottles = useAnimatedNumber(results.spiritBottles);
+  const animatedCostLow = useAnimatedNumber(results.costLow);
+  const animatedCostHigh = useAnimatedNumber(results.costHigh);
+
   return (
     <div className="space-y-6">
       <VibeMeter
@@ -46,10 +54,10 @@ export function Results({ results, barStyle, state, serviceType, qualityTier }: 
             </div>
             <div className="text-right">
               <p className="text-xl font-semibold text-stone-800">
-                {results.beerCases} cases
+                {animatedBeerCases} cases
               </p>
               <p className="text-sm text-stone-500">
-                {results.beerBottles} bottles
+                {animatedBeerBottles} bottles
               </p>
             </div>
           </div>
@@ -62,7 +70,7 @@ export function Results({ results, barStyle, state, serviceType, qualityTier }: 
               </div>
               <div className="text-right">
                 <p className="text-xl font-semibold text-stone-800">
-                  {results.wineBottles} bottles
+                  {animatedWineBottles} bottles
                 </p>
                 <p className="text-sm text-stone-500">
                   {results.wineRed} red, {results.wineWhite} white
@@ -79,7 +87,7 @@ export function Results({ results, barStyle, state, serviceType, qualityTier }: 
               </div>
               <div className="text-right">
                 <p className="text-xl font-semibold text-stone-800">
-                  {results.spiritBottles} bottles
+                  {animatedSpiritBottles} bottles
                 </p>
                 <p className="text-sm text-stone-500">
                   {results.spiritBreakdown.vodka} vodka, {results.spiritBreakdown.whiskey} whiskey,
@@ -96,7 +104,7 @@ export function Results({ results, barStyle, state, serviceType, qualityTier }: 
       <div className="space-y-2">
         <h3 className="text-sm font-medium text-stone-600">Estimated Cost</h3>
         <p className="text-3xl font-bold text-stone-800">
-          {formatCurrency(results.costLow)} – {formatCurrency(results.costHigh)}
+          {formatCurrency(animatedCostLow)} – {formatCurrency(animatedCostHigh)}
         </p>
         <p className="text-sm text-stone-500">
           Based on {qualityLabel} {serviceLabel} pricing in {STATE_NAMES[state] || state}
