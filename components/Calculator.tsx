@@ -57,6 +57,12 @@ export function Calculator() {
       <footer className="border-t border-stone-200 bg-white mt-16">
         <div className="max-w-6xl mx-auto px-4 py-6 text-center text-sm text-stone-500">
           <p>Pour Planner - Plan your event bar with confidence</p>
+          <p className="mt-2">
+            Questions or feedback?{' '}
+            <a href="mailto:everybody@whimsyxm.com" className="text-amber-600 hover:text-amber-700 underline">
+              everybody@whimsyxm.com
+            </a>
+          </p>
         </div>
       </footer>
     </div>
