@@ -55,8 +55,8 @@ export const SERVICE_MODIFIERS = {
 export const VIBE_LEVELS: VibeLevel[] = [
   { level: 1, name: 'Stone Cold Sober Squad', description: 'Minimal alcohol presence', minDrinksPerHour: 0, maxDrinksPerHour: 0.5 },
   { level: 2, name: '"I\'ll Have ONE Beer"', description: 'Light, controlled sipping', minDrinksPerHour: 0.5, maxDrinksPerHour: 0.75 },
-  { level: 3, name: 'Social Sippers', description: 'Moderate, dinner-party vibes', minDrinksPerHour: 0.75, maxDrinksPerHour: 1.0 },
-  { level: 4, name: 'We\'re Here to Party', description: 'Generous pours, good time', minDrinksPerHour: 1.0, maxDrinksPerHour: 1.5 },
+  { level: 3, name: 'Social Sippers', description: 'Moderate, dinner-party vibes', minDrinksPerHour: 0.75, maxDrinksPerHour: 1.001 },
+  { level: 4, name: 'We\'re Here to Party', description: 'Generous pours, good time', minDrinksPerHour: 1.001, maxDrinksPerHour: 1.5 },
   { level: 5, name: 'Eternal Frat Boys', description: 'Hold onto your hats', minDrinksPerHour: 1.5, maxDrinksPerHour: Infinity },
 ];
 
