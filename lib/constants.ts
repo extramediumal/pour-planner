@@ -51,7 +51,7 @@ export const QUALITY_MODIFIERS = {
 
 export const SERVICE_MODIFIERS = {
   byob: 1.0,
-  venue: 3.0,
+  venue: 4.0,
 };
 
 export const VIBE_LEVELS: VibeLevel[] = [
